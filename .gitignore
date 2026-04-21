@@ -1,2 +1,4 @@
 __pycache__/
 *.py[cod]
+dataset/easyread-retrieval-dataset/data/
+dataset/easyread-retrieval-dataset/gold_standard_pic/
