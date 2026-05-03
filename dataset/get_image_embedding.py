@@ -1,33 +1,43 @@
+import transformers.models.clip.modeling_clip as _clip_mod
+if not hasattr(_clip_mod, 'clip_loss') and hasattr(_clip_mod, 'contrastive_loss'):
+    _clip_mod.clip_loss = _clip_mod.contrastive_loss
+
 from PIL import Image
 from pathlib import Path
 import torch
-from transformers import CLIPProcessor, CLIPModel
+from transformers import AutoModel
 
-# Load once at module level (cached after first call)
 _model = None
-_processor = None
 
 def _load_model():
-    global _model, _processor
+    global _model
     if _model is None:
-        _model = CLIPModel.from_pretrained("openai/clip-vit-base-patch32")
-        _processor = CLIPProcessor.from_pretrained("openai/clip-vit-base-patch32")
+        _model = AutoModel.from_pretrained(
+            "jinaai/jina-clip-v2",
+            trust_remote_code=True,
+            device_map="auto"  # keep VRAM free for vLLM
+        )
         _model.eval()
-    return _model, _processor
+    return _model
 
 
 def get_image_embedding(image_path):
     """
-    Generates an image embedding using CLIP (local, free, no quota).
+    Generates an image embedding using jina-clip-v2 (local, free, no quota).
     Returns a list of floats representing the visual vector.
     """
-    model, processor = _load_model()
-
+    import numpy as np
+    
+    model = _load_model()
     image = Image.open(image_path).convert("RGB")
-    inputs = processor(images=image, return_tensors="pt")
-
     with torch.no_grad():
-        embedding = model.get_image_features(**inputs)
-        embedding = embedding / embedding.norm(dim=-1, keepdim=True)  # normalize
-
-    return embedding[0].tolist()
+        embedding = model.encode_image(image)
+    
+    # Handle both numpy arrays and torch tensors
+    if isinstance(embedding, np.ndarray):
+        embedding = embedding / np.linalg.norm(embedding)
+        return embedding.tolist()
+    else:
+        embedding = embedding.cpu()
+        embedding = embedding / embedding.norm()
+        return embedding.tolist()

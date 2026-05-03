@@ -7,7 +7,7 @@ from get_image_embedding import get_image_embedding
 
 # --- Configuration ---
 GOLD_IMAGES_DIR = Path("easyread-retrieval-dataset/gold_standard_pic")
-GOLD_METADATA_FILE = Path("easyread-retrieval-dataset/gold_standard.jsonl")
+GOLD_METADATA_FILE = Path("easyread-retrieval-dataset/gold_standards.jsonl")
 EMBEDDINGS_CACHE = Path(__file__).resolve().parent / "gold_embeddings.pkl"
 
 gold_labels_map = {}
