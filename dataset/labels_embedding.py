@@ -14,12 +14,12 @@ from get_image_embedding import get_image_embedding
 # ── Paths ──────────────────────────────────────────────────────────────────────
 EMBEDDINGS_PATH = Path("gold_embeddings.pkl")
 DATA_DIR        = Path("easyread-retrieval-dataset/data")
-METADATA_PATH   = Path("easyread-retrieval-dataset/metadata_v4.jsonl")
+METADATA_PATH   = Path("easyread-retrieval-dataset/metadata_v5.jsonl")
 GOLD_PIC_DIR    = Path("easyread-retrieval-dataset/gold_standard_pic")
 
 # ── Config ─────────────────────────────────────────────────────────────────────
 VLLM_MAX_RETRIES  = max(1, int(os.getenv("VLLM_MAX_RETRIES", "3")))
-VLLM_MODEL        = os.getenv("VLLM_MODEL", "RedHatAI/Qwen2.5-VL-7B-Instruct-quantized.w4a16")
+VLLM_MODEL        = os.getenv("VLLM_MODEL", "Qwen/Qwen3-VL-8B-Instruct-FP8")
 VLLM_CHAT_URL     = os.getenv("VLLM_CHAT_URL", "http://localhost:8000/v1/chat/completions")
 MAX_IMAGES        = 16000
 TOP_K             = 2
@@ -95,9 +95,12 @@ def _vllm_call(user_content: list) -> str:
     payload = json.dumps({
         "model": VLLM_MODEL,
         "messages": [{"role": "user", "content": user_content}],
-        "temperature": 0.2,
-        "max_tokens": 1024,
+        "temperature": 0.1,
+        "top_p": 0.9,
+        "max_tokens": 512,
         "response_format": {"type": "json_object"},
+        "seed": 42,
+        "chat_template_kwargs": {"enable_thinking": False},  # disable thinking mode
     }).encode("utf-8")
 
     req = Request(
@@ -130,11 +133,18 @@ def _vllm_call(user_content: list) -> str:
 
 def label_with_rag(target_image_path, example_images, example_jsons, target_image_name, example_image_names) -> dict:
     task_text = """Task: Label this Easy Read pictogram into JSON with this exact structure:
-{"raw_caption": "<one sentence describing the image>", "intent": {"actors": [...], "actions": [...], "objects": [...], "setting": "<context or 'unknown'>", "emotion": "<one of: positive, negative, neutral>"}}
-Output only a single JSON object, no markdown. Focus exclusively on what is VISUALLY present in the image.
-The filename is auxiliary context ONLY — if it seems unrelated or generic, ignore it entirely and rely solely on the image content.
-Never describe what you expect to see based on the filename. Describe only what you actually see.
-Emotion reflects the affective tone of the literally depicted scene: positive (happiness/celebration), negative (distress/pain), or neutral (everything else)."""
+    {"raw_caption": "<one sentence describing the image>", "intent": {"actors": [...], "actions": [...], "objects": [...], "setting": "<context or 'unknown'>", "emotion": "<one of: positive, negative, neutral>"}}
+
+    Output only a single JSON object, no markdown.
+
+    Important guidance on filenames:
+    - The filename is often a strong semantic hint about what the pictogram represents.
+    - If the filename is descriptive (e.g. "baby_suckling", "fire_extinguisher", "happy_birthday"), USE IT to disambiguate ambiguous visuals.
+    - Only ignore the filename when it is clearly generic (e.g. "image_2", "icon_42") or contradicts what is unmistakably visible.
+    - When the filename and image agree, lean into the filename's interpretation.
+    - When in doubt, the filename usually wins over weak visual cues.
+
+    Emotion reflects the affective tone: positive (happiness/celebration), negative (distress/pain), or neutral (everything else)."""
 
     serialized = [
         ej if isinstance(ej, str) else json.dumps(ej, ensure_ascii=False)
