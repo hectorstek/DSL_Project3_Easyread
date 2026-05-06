@@ -19,7 +19,8 @@ with open(config.METADATA_JSON, 'r', encoding='utf-8') as f:
             'emb_actors': model.encode(intent.get('actors', []), convert_to_tensor=True) if intent.get('actors') else torch.empty((0, 384)),
             'emb_actions': model.encode(intent.get('actions', []), convert_to_tensor=True) if intent.get('actions') else torch.empty((0, 384)),
             'emb_objects': model.encode(intent.get('objects', []), convert_to_tensor=True) if intent.get('objects') else torch.empty((0, 384)),
-            'emb_setting': model.encode(intent.get('setting', ''), convert_to_tensor=True) if intent.get('setting') else None
+            'emb_setting': model.encode(intent.get('setting', ''), convert_to_tensor=True) if intent.get('setting') else None,
+            'emb_emotion': model.encode(intent.get('setting', ''), convert_to_tensor=True) if intent.get('setting') else None
         })
 
 with open(config.HYBRID_INDEX, 'wb') as f:

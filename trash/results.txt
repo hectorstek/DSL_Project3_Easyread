@@ -1,0 +1,107 @@
+"A man is running in the park.", 0
+"I am eating an apple.", 1
+"The weather is very sunny today.", 1
+"We are going for a walk together.", 1
+"I need help with shopping.", -1
+"A group of people is talking to each other.", 1
+"The teacher explains something to the class.", 1
+"The boy is putting on his shoes.", 1
+"I wash my hands with soap.", 1
+"The child is sleeping in a big bed.", 0
+"I brush my teeth every morning.", 0
+"She is cooking soup in the kitchen.", 1
+"We are going to the supermarket to buy food.", 1
+"The doctor works in a large hospital.", 1
+"I am waiting for the bus at the station.", 1
+"I am very happy about the gift.", 1
+"Today I feel very tired.", 0
+"It is too loud in this room.", 1
+"No smoking is allowed here.", 1
+"Please keep a safe distance.", 1
+
+"A woman is reading a book.", 0
+"The cat is sitting on the chair.", -1
+"I am drinking a glass of water.", 0
+"The dog is playing with a ball.", 1
+"We are watching a movie together.", 1
+"He is writing a letter.", 1
+"The baby is crying loudly.", 1
+"She is opening the window.", -1
+"I am closing the door.", 1
+"They are cleaning the room.", 1
+"The car is stopping at the light.", 1
+"I am learning a new word.", 1
+"The sun is rising in the morning.", 1
+"The moon is shining at night.", 1
+"We are sitting at the table.", 1
+"He is cutting bread with a knife.", 1
+"She is washing the dishes.", 1
+"I am putting on my jacket.", 1
+"The train is arriving at the station.", 1
+"The phone is ringing loudly.", -1
+
+"I am calling my friend.", 1
+"The girl is drawing a picture.", 1
+"The boy is kicking the ball.", 1
+"We are listening to music.", 1
+"She is buying a ticket.", 1
+"He is opening his bag.", 0
+"I am taking a shower.", 1
+"The bird is flying in the sky.", 1
+"The fish is swimming in the water.", 1
+"We are standing in a line.", 1
+"He is fixing the chair.", 1
+"She is folding clothes.", 1
+"I am packing my bag.", 1
+"The children are playing outside.", 1
+"The teacher is asking a question.", 1
+"I am answering the question.", 1
+"The waiter is serving food.", 1
+"We are eating dinner together.", 0
+"He is drinking coffee.", 0
+"She is cutting vegetables.", 1
+
+"I am reading the newspaper.", 1
+"The man is driving a car.", 0
+"The woman is walking her dog.", 1
+"We are visiting a friend.", 1
+"He is opening a book.", -1
+"She is closing her eyes.", 0
+"I am tying my shoes.", 1
+"The child is laughing happily.", 1
+"The baby is drinking milk.", 1
+"We are riding bicycles.", 1
+"He is jumping high.", 1
+"She is singing a song.", 1
+"I am writing in my notebook.", 1
+"The clock is showing the time.", 1
+"The door is locked.", 0
+"We are entering the building.", 1
+"He is leaving the room.", 1
+"She is holding a cup.", 0
+"I am dropping the keys.", -1
+"The light is turning on.", 1
+
+"The light is turning off.", 1
+"We are waiting in the queue.", 1
+"He is checking his phone.", 1
+"She is smiling at me.", 1
+"I am opening the fridge.", 1
+"The food is on the table.", 1
+"We are sharing the meal.", 1
+"He is carrying a box.", 1
+"She is pushing the cart.", 1
+"I am picking up the book.", 1
+"The window is clean.", 1
+"The floor is wet.", 1
+"We are walking in the rain.", 1
+"He is holding an umbrella.", 1
+"She is drying her hands.", -1
+"I am turning the page.", 1
+"The class is starting now.", 1
+"The lesson is ending soon.", -1
+"We are going home.", 1
+"Good night and sleep well.", 0
+
+
+

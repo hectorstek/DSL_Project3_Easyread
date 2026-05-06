@@ -21,11 +21,11 @@ class HybridMatcher(BaseMatcher):
             #self.dataset = torch.load(f, map_location="cpu", weights_only=False)
             self.dataset = pickle.load(f)
 
-        self.w = {'cap': 0.50, 'act': 0.15, 'exe': 0.20, 'obj': 0.10, 'set': 0.05}
+        self.w = {'cap': 0.50, 'act': 0.15, 'exe': 0.15, 'obj': 0.15, 'set': 0.00, 'em': 0.05}
 
     # create intent for input sentence
     def _get_intent(self, query: str) -> dict:
-        prompt = f"Extract actors, actions, objects (lists) and setting (string) from: '{query}'. Output strictly ONLY JSON."
+        prompt = f"Extract actors, actions, objects (lists) and setting, emotion (string) from: '{query}'. Output strictly ONLY JSON."
         messages = [{"role": "user", "content": prompt}]
         fmt = self.llm.tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=True)
 
@@ -51,6 +51,7 @@ class HybridMatcher(BaseMatcher):
                 return [val]
             return []
 
+        final_scores = []
         for query in sentences:
             intent = self._get_intent(query)
 
@@ -59,6 +60,7 @@ class HybridMatcher(BaseMatcher):
             exe_list = ensure_list(intent.get('actions', []))
             obj_list = ensure_list(intent.get('objects', []))
             setting_str = str(intent.get('setting', '')).strip()
+            emotion_str = str(intent.get('emotion', '')).strip()
 
             # Embed Query Components
             q_cap = self.st_model.encode(query, convert_to_tensor=True)
@@ -68,6 +70,7 @@ class HybridMatcher(BaseMatcher):
             q_exe = self.st_model.encode(exe_list, convert_to_tensor=True) if exe_list else torch.empty((0, 384))
             q_obj = self.st_model.encode(obj_list, convert_to_tensor=True) if obj_list else torch.empty((0, 384))
             q_set = self.st_model.encode(setting_str, convert_to_tensor=True) if setting_str else None
+            q_em = self.st_model.encode(emotion_str, convert_to_tensor=True) if emotion_str else None
 
             scored_files = []
             for doc in self.dataset:
@@ -88,11 +91,15 @@ class HybridMatcher(BaseMatcher):
                 # compute similarity of setting (if it exists)
                 if q_set is not None and doc.get('emb_setting') is not None:
                     score += self.w['set'] * util.cos_sim(q_set, doc['emb_setting']).item()
+                #if q_em is not None and doc.get('emb_emotion') is not None:
+                #    score += self.w['set'] * util.cos_sim(q_set, doc['emb_emotion']).item()
 
                 scored_files.append((score, doc['original_filename']))
 
             # sort the files
             scored_files.sort(key=lambda x: x[0], reverse=True)
+            final_scores.append(scored_files[0][0])
+
 
             # return output as filename
             final_top = []
@@ -103,5 +110,6 @@ class HybridMatcher(BaseMatcher):
                 final_top.append(filename)
 
             results.append(final_top)
-
-        return results
+        print(f"The average is {sum(final_scores)/len(final_scores)}.")
+        print(final_scores)
+        return [results, final_scores]
