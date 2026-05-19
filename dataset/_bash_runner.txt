@@ -1,0 +1,15 @@
+# Launch vLLM
+vllm serve Qwen/Qwen3-VL-8B-Instruct-FP8 \
+  --host 0.0.0.0 --port 8000 \
+  --trust-remote-code \
+  --max-model-len 4096 \
+  --gpu-memory-utilization 0.92 \
+  --limit-mm-per-prompt '{"image": 3, "video": 0}' \
+  --enforce-eager \
+  > vllm.log 2>&1 &
+
+# Wait for it
+until curl -s http://localhost:8000/v1/models | grep -q "Qwen3-VL"; do echo "Waiting..."; sleep 10; done; echo "✅ Ready"
+
+# Run script
+python3 labels_embedding.py

@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="780" viewBox="0 0 1100 780" font-family="'Helvetica Neue', Helvetica, Arial, sans-serif">
+
+  <rect width="1100" height="780" fill="#ffffff"/>
+
+  <!-- Title -->
+  <text x="550" y="38" text-anchor="middle" font-size="16" font-weight="600" fill="#111111" letter-spacing="0.3">Global Pipeline — EasyRead Pictogram Retrieval</text>
+  <line x1="60" y1="50" x2="1040" y2="50" stroke="#e0e0e0" stroke-width="1"/>
+
+  <!-- ── ARROW MARKERS ── -->
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#666666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#aaaaaa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr-bridge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M2 1L8 5L2 9" fill="none" stroke="#9a6f00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       LEFT — STAGE 1: OFFLINE LABELLING (yellow/amber)
+  ════════════════════════════════════════════════════════════════ -->
+
+  <!-- Stage banner -->
+  <rect x="60" y="74" width="380" height="22" rx="3" fill="#fdf6ec" stroke="none"/>
+  <text x="250" y="89" text-anchor="middle" font-size="11" fill="#7a5a00" font-weight="600" letter-spacing="1.5">STAGE 1 — OFFLINE LABELLING</text>
+
+  <!-- Box 1.1: ARASAAC images -->
+  <rect x="120" y="116" width="260" height="58" rx="6" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.3"/>
+  <text x="250" y="138" text-anchor="middle" font-size="13" font-weight="600" fill="#7a5a00">ARASAAC dataset</text>
+  <text x="250" y="156" text-anchor="middle" font-size="11" fill="#a07820">~15 000 pictogram images</text>
+
+  <!-- arrow -->
+  <line x1="250" y1="174" x2="250" y2="200" stroke="#9a6f00" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 1.2: Gold standard (lateral feed) -->
+  <rect x="20" y="208" width="120" height="58" rx="6" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.3"/>
+  <text x="80" y="230" text-anchor="middle" font-size="12" font-weight="600" fill="#7a5a00">Gold standard</text>
+  <text x="80" y="246" text-anchor="middle" font-size="10" fill="#a07820">50 hand-labelled</text>
+  <text x="80" y="258" text-anchor="middle" font-size="10" fill="#a07820">examples (JSON)</text>
+
+  <!-- arrow from gold standard -->
+  <line x1="140" y1="237" x2="172" y2="237" stroke="#aaaaaa" stroke-width="1.2" stroke-dasharray="4 3" marker-end="url(#arr-muted)"/>
+
+  <!-- Box 1.3: VLM labelling -->
+  <rect x="172" y="200" width="216" height="74" rx="6" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.3"/>
+  <text x="280" y="222" text-anchor="middle" font-size="13" font-weight="600" fill="#7a5a00">Qwen3-VL-8B-FP8</text>
+  <text x="280" y="240" text-anchor="middle" font-size="11" fill="#a07820">RAG prompting</text>
+  <text x="280" y="256" text-anchor="middle" font-size="11" fill="#a07820">+ self-verification</text>
+  <text x="280" y="268" text-anchor="middle" font-size="10" fill="#a07820" font-style="italic">vLLM serving · top-2 examples</text>
+
+  <!-- arrow -->
+  <line x1="250" y1="274" x2="250" y2="300" stroke="#9a6f00" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 1.4: Structured JSON output -->
+  <rect x="100" y="300" width="300" height="92" rx="6" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.3"/>
+  <text x="250" y="322" text-anchor="middle" font-size="13" font-weight="600" fill="#7a5a00">Structured JSON label per image</text>
+  <text x="250" y="342" text-anchor="middle" font-size="11" fill="#a07820">raw_caption (1 sentence)</text>
+  <text x="250" y="358" text-anchor="middle" font-size="11" fill="#a07820">intent: actors · actions · objects</text>
+  <text x="250" y="372" text-anchor="middle" font-size="11" fill="#a07820">setting · emotion</text>
+
+  <!-- arrow -->
+  <line x1="250" y1="392" x2="250" y2="418" stroke="#9a6f00" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 1.5: Embed all fields -->
+  <rect x="120" y="418" width="260" height="62" rx="6" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.3"/>
+  <text x="250" y="440" text-anchor="middle" font-size="13" font-weight="600" fill="#7a5a00">Encode all components</text>
+  <text x="250" y="458" text-anchor="middle" font-size="11" fill="#a07820">MiniLM-L12-v2 · 384-dim vectors</text>
+  <text x="250" y="472" text-anchor="middle" font-size="10" fill="#a07820" font-style="italic">per field: caption + 5 intent components</text>
+
+  <!-- arrow -->
+  <line x1="250" y1="480" x2="250" y2="506" stroke="#9a6f00" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 1.6: Indexed metadata store -->
+  <rect x="100" y="506" width="300" height="64" rx="6" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.6"/>
+  <text x="250" y="528" text-anchor="middle" font-size="13" font-weight="700" fill="#7a5a00">Indexed metadata store (.pkl)</text>
+  <text x="250" y="546" text-anchor="middle" font-size="11" fill="#a07820">~15 000 labelled entries + embeddings</text>
+  <text x="250" y="560" text-anchor="middle" font-size="10" fill="#a07820" font-style="italic">one-time setup, reused at runtime</text>
+
+  <!-- ─── BRIDGE between Stage 1 and Stage 2 ─── -->
+  <line x1="400" y1="545" x2="600" y2="410" stroke="#9a6f00" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arr-bridge)"/>
+  <!-- <rect x="475" y="520" width="150" height="22" rx="11" fill="#ffffff" stroke="#9a6f00" stroke-width="1.2"/> -->
+  <!-- <text x="550" y="535" text-anchor="middle" font-size="11" font-weight="600" fill="#9a6f00">indexed corpus feeds runtime</text> -->
+
+  <!-- Vertical dashed separator between stages -->
+  <line x1="450" y1="74" x2="450" y2="600" stroke="#dddddd" stroke-width="1" stroke-dasharray="5 4"/>
+
+  <!-- ═══════════════════════════════════════════════════════════════
+       RIGHT — STAGE 2: RUNTIME RETRIEVAL (blue/teal)
+  ════════════════════════════════════════════════════════════════ -->
+
+  <!-- Stage banner -->
+  <rect x="460" y="74" width="580" height="22" rx="3" fill="#eff4ff" stroke="none"/>
+  <text x="750" y="89" text-anchor="middle" font-size="11" fill="#1a3a7a" font-weight="600" letter-spacing="1.5">STAGE 2 — RUNTIME RETRIEVAL</text>
+
+  <!-- Box 2.1: Input sentence -->
+  <rect x="620" y="116" width="260" height="58" rx="6" fill="#f5f5f5" stroke="#bbbbbb" stroke-width="1.3"/>
+  <text x="750" y="138" text-anchor="middle" font-size="13" font-weight="600" fill="#222222">Input sentence</text>
+  <text x="750" y="156" text-anchor="middle" font-size="11" fill="#666666">EasyRead text from user</text>
+
+  <!-- arrow -->
+  <line x1="750" y1="174" x2="750" y2="200" stroke="#3a5aaa" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 2.2: LLM intent extraction -->
+  <rect x="620" y="200" width="260" height="64" rx="6" fill="#eff4ff" stroke="#7fa8e8" stroke-width="1.3"/>
+  <text x="750" y="222" text-anchor="middle" font-size="13" font-weight="600" fill="#1a3a7a">Extract structured intent</text>
+  <text x="750" y="240" text-anchor="middle" font-size="11" fill="#3a5aaa">Qwen2.5-VL-7B-Instruct LLM</text>
+  <text x="750" y="254" text-anchor="middle" font-size="10" fill="#3a5aaa" font-style="italic">same schema as labelling stage</text>
+
+  <!-- arrow -->
+  <line x1="750" y1="264" x2="750" y2="290" stroke="#3a5aaa" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 2.3: Encode 6 components -->
+  <rect x="620" y="290" width="260" height="62" rx="6" fill="#eff4ff" stroke="#7fa8e8" stroke-width="1.3"/>
+  <text x="750" y="312" text-anchor="middle" font-size="13" font-weight="600" fill="#1a3a7a">Encode 6 components</text>
+  <text x="750" y="330" text-anchor="middle" font-size="11" fill="#3a5aaa">MiniLM-L12-v2 · 384-dim vectors</text>
+  <text x="750" y="344" text-anchor="middle" font-size="10" fill="#3a5aaa" font-style="italic">sentence + 5 intent components</text>
+
+  <!-- arrow -->
+  <line x1="750" y1="352" x2="750" y2="378" stroke="#3a5aaa" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 2.4: Per-component cosine similarity -->
+  <rect x="600" y="378" width="300" height="64" rx="6" fill="#eff4ff" stroke="#7fa8e8" stroke-width="1.3"/>
+  <text x="750" y="400" text-anchor="middle" font-size="13" font-weight="600" fill="#1a3a7a">Compute similarity scores</text>
+  <text x="750" y="418" text-anchor="middle" font-size="11" fill="#3a5aaa">cosine similarity per component</text>
+  <text x="750" y="432" text-anchor="middle" font-size="10" fill="#3a5aaa" font-style="italic">vs every entry in indexed corpus</text>
+
+  <!-- arrow -->
+  <line x1="750" y1="442" x2="750" y2="468" stroke="#3a5aaa" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 2.5: Weighted aggregation + ranking -->
+  <rect x="560" y="468" width="380" height="76" rx="6" fill="#edfaf3" stroke="#6ac49a" stroke-width="1.3"/>
+  <text x="750" y="490" text-anchor="middle" font-size="13" font-weight="600" fill="#0e5c33">Weighted aggregation &amp; ranking</text>
+  <text x="750" y="508" text-anchor="middle" font-size="11" fill="#1a7a44">48% caption/sentence · 15% action · 15% actor</text>
+  <text x="750" y="522" text-anchor="middle" font-size="11" fill="#1a7a44">15% object · 2% setting · 5% emotion</text>
+  <text x="750" y="536" text-anchor="middle" font-size="10" fill="#1a7a44" font-style="italic">→ top-5 candidates</text>
+
+  <!-- arrow -->
+  <line x1="750" y1="544" x2="750" y2="570" stroke="#0e5c33" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 2.6: VLM final selection -->
+  <rect x="600" y="570" width="300" height="64" rx="6" fill="#fbece8" stroke="#d99580" stroke-width="1.3"/>
+  <text x="750" y="592" text-anchor="middle" font-size="13" font-weight="600" fill="#7c2d12">VLM selects final image</text>
+  <text x="750" y="610" text-anchor="middle" font-size="11" fill="#a04020">Gemma 4 E4B-it</text>
+  <text x="750" y="624" text-anchor="middle" font-size="10" fill="#a04020" font-style="italic">visual reranking among top-5</text>
+
+  <!-- arrow -->
+  <line x1="750" y1="634" x2="750" y2="658" stroke="#666666" stroke-width="1.3" marker-end="url(#arr)"/>
+
+  <!-- Box 2.7: Output -->
+  <rect x="620" y="658" width="260" height="50" rx="6" fill="#f5f5f5" stroke="#bbbbbb" stroke-width="1.3"/>
+  <text x="750" y="678" text-anchor="middle" font-size="13" font-weight="600" fill="#222222">Best matching pictogram</text>
+  <text x="750" y="696" text-anchor="middle" font-size="11" fill="#666666">ARASAAC EasyRead-compliant</text>
+
+  <!-- ─── LEGEND ─── -->
+  <line x1="60" y1="730" x2="1040" y2="730" stroke="#e0e0e0" stroke-width="1"/>
+  <rect x="60" y="746" width="12" height="12" rx="2" fill="#fdf6ec" stroke="#e8c97a" stroke-width="1.2"/>
+  <text x="78" y="757" font-size="11" fill="#666666">Offline labelling (run once)</text>
+  <rect x="250" y="746" width="12" height="12" rx="2" fill="#eff4ff" stroke="#7fa8e8" stroke-width="1.2"/>
+  <text x="268" y="757" font-size="11" fill="#666666">Query processing</text>
+  <rect x="400" y="746" width="12" height="12" rx="2" fill="#edfaf3" stroke="#6ac49a" stroke-width="1.2"/>
+  <text x="418" y="757" font-size="11" fill="#666666">Ranking</text>
+  <rect x="500" y="746" width="12" height="12" rx="2" fill="#fbece8" stroke="#d99580" stroke-width="1.2"/>
+  <text x="518" y="757" font-size="11" fill="#666666">Visual reranking</text>
+  <rect x="640" y="746" width="12" height="12" rx="2" fill="#f5f5f5" stroke="#bbbbbb" stroke-width="1.2"/>
+  <text x="658" y="757" font-size="11" fill="#666666">Input / Output</text>
+
+</svg>

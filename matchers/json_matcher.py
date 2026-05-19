@@ -25,6 +25,7 @@ class JsonMatcher(BaseMatcher):
             self.dataset = pickle.load(f)
 
         self.top_k = top_k
+        self.top_n = 20  # candidates passed to LLM reranker
         self.weights = {'actors': 0.40, 'actions': 0.40, 'objects': 0.15, 'setting': 0.05}
 
     def _ask_llm(self, prompt: str) -> str:
