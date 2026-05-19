@@ -130,18 +130,18 @@ SENTENCES_TO_GENERATE = [
     "We are going home.",
     "Good night and sleep well."
 ]
-
+'''
 SENTENCES_TO_GENERATE = [
-    "A girl is painting a picture.",
-    "I am watering the plants.",
-    "The sky is clear and blue.",
-    "We are playing a game outside.",
-    "I need help with my homework.",
-    "A group of friends is laughing together.",
-    "The nurse helps patients in the clinic.",
-    "The baby is crawling on the floor.",
-    "I comb my hair every day.",
-    "The child is sitting on a swing.",
+    #"A girl is painting a picture.",
+    #"I am watering the plants.",
+    #"The sky is clear and blue.",
+    #"We are playing a game outside.",
+    #"I need help with my homework.",
+    #"A group of friends is laughing together.",
+    #"The nurse helps patients in the clinic.",
+    #"The baby is crawling on the floor.",
+    #"I comb my hair every day.",
+    #"The child is sitting on a swing.",
     "I wear a coat when it is cold.",
     "He is baking a cake in the oven.",
     "We are going to the park for a picnic.",
@@ -237,7 +237,7 @@ SENTENCES_TO_GENERATE = [
     "We are going to the library.",
     "Good morning and have a nice day."
 ]
-
+'''
 def main():
 
     #with open(config.GROUND_TRUTH_FILE, "r") as f:
@@ -262,7 +262,7 @@ def main():
     #SENTENCES_TO_GENERATE = [item['sentence'] for item in ground_truth_data]
 
     #matched_files = matcher.match(SENTENCES_TO_GENERATE[0:10], top_k=1)
-    output = matcher.match(SENTENCES_TO_GENERATE[0:10], top_k=1)
+    output = matcher.match(SENTENCES_TO_GENERATE[0:100], top_k=1)
     matched_files = output[0] #[0]
     scores = output[1] #list(range(2)) #[0, 1] #output[1]
     scores_unsorted = scores

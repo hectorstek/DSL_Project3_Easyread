@@ -91,8 +91,8 @@ class HybridMatcher(BaseMatcher):
                 # compute similarity of setting (if it exists)
                 if q_set is not None and doc.get('emb_setting') is not None:
                     score += self.w['set'] * util.cos_sim(q_set, doc['emb_setting']).item()
-                #if q_em is not None and doc.get('emb_emotion') is not None:
-                #    score += self.w['set'] * util.cos_sim(q_set, doc['emb_emotion']).item()
+                if q_em is not None and doc.get('emb_emotion') is not None:
+                    score += self.w['set'] * util.cos_sim(q_set, doc['emb_emotion']).item()
 
                 scored_files.append((score, doc['original_filename']))
 
