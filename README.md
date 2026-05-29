@@ -47,27 +47,29 @@ For each input sentence:
 1. **Intent extraction.** `Qwen2.5-1.5B-Instruct` parses the sentence into the same JSON schema used for labelling.
 2. **Encoding.** Each field (caption + 5 intent components) is encoded with the same MiniLM model.
 3. **Per-field similarity.** Cosine similarity is computed between the sentence and every entry in the indexed corpus, field by field.
-4. **Weighted ranking.** Field similarities are aggregated using empirically chosen weights (50% caption, 20% action, 15% actor, 10% object, 5% emotion) to produce the top-5 candidates.
+4. **Weighted ranking.** Field similarities are aggregated using empirically chosen weights (50% caption, 15% action, 15% actor, 15% object, 5% emotion) to produce the top-5 candidates.
 5. **VLM reranking.** **Gemma 4 E4B-it** sees the top-5 alongside the sentence, picks the best match, and returns a confidence score.
 
 The final output is a single ARASAAC pictogram plus a confidence score that flags low-quality matches for human review.
 
----
-
 ## Repository structure
 
-```
+```text
 DSL_Project3_Easyread/
-├── dataset/               # offline corpus annotation (RAG + self-verification)
-├── matchers/              # runtime retrieval pipeline
-├── app/                   # Streamlit interface
-├── evaluators/            # evaluation scripts
-├── main.py                # main runner with 100 input sentences
-├── requirements.txt
-└── README.md
-```
 
----
+├── app/                   # Streamlit interface and frontend components
+├── dataset/               # Offline corpus annotation (RAG + self-verification)
+├── evaluators/            # Evaluation scripts
+├── helper/                # Helper functions
+├── input/                 # Input files
+├── matchers/              # Retrieval pipeline
+├── output/                # Generated outputs and results
+
+├── LICENSE                # Project license
+├── README.md              # Project documentation
+├── config.py              # Global configuration settings
+└── main.py                # Main entry point and pipeline runner
+```
 
 ## Setup
 
@@ -76,18 +78,17 @@ Clone the repository and create a virtual environment:
 ```bash
 git clone https://github.com/hectorstek/DSL_Project3_Easyread.git
 cd DSL_Project3_Easyread
-python -m venv venv
+python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
 ```
 
 ### ARASAAC dataset
 
-The ARASAAC pictograms are not included in this repository. Download them from [arasaac.org](https://arasaac.org) (CC BY-NC-SA, © Government of Aragon) and place them under `data/arasaac/`.
+The ARASAAC pictograms are not included in this repository. Download a version that you like and place them under `dataset/easyread-retrieval-dataset/data`.
 
 ### Models
 
-All models are downloaded automatically from Hugging Face on first run. For the labelling stage you will need a GPU (we used an NVIDIA RTX 5060 Ti, 16 GB). The retrieval stage runs on CPU, but very slowly.
+All models are downloaded Hugging Face. The Gemma 4 model requires a token. For the labelling stage you will need a GPU (we used an NVIDIA RTX 5060 Ti, 16 GB). The retrieval stage runs on CPU, but is much faster on GPU.
 
 ---
 
@@ -106,10 +107,8 @@ Type an EasyRead sentence into the interface and see the retrieved pictogram wit
 ### Run retrieval on a batch of sentences
 
 ```bash
-python retrieval/run.py --input sentences.txt --output results/
+python3 main.py
 ```
-
-`sentences.txt` should contain one sentence per line.
 
 ### Re-run labelling on the corpus
 

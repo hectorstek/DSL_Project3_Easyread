@@ -8,7 +8,6 @@ from evaluators.pdf_evaluator import PDFEvaluator
 from evaluators.clip_evaluator import ClipEvaluator
 from evaluators.top_k_evaluator import TopKEvaluator
 from evaluators.vlm_evaluator import VLMEvaluator
-#from evaluators.top_1_evaluator import GroundTruthEvaluator
 import config
 import json
 from datetime import datetime
@@ -130,154 +129,24 @@ SENTENCES_TO_GENERATE = [
     "We are going home.",
     "Good night and sleep well."
 ]
-'''
-SENTENCES_TO_GENERATE = [
-    #"A girl is painting a picture.",
-    #"I am watering the plants.",
-    #"The sky is clear and blue.",
-    #"We are playing a game outside.",
-    #"I need help with my homework.",
-    #"A group of friends is laughing together.",
-    #"The nurse helps patients in the clinic.",
-    #"The baby is crawling on the floor.",
-    #"I comb my hair every day.",
-    #"The child is sitting on a swing.",
-    "I wear a coat when it is cold.",
-    "He is baking a cake in the oven.",
-    "We are going to the park for a picnic.",
-    "The firefighter works at the fire station.",
-    "I am waiting for my turn.",
-    "I am excited about the trip.",
-    "Today I feel very hungry.",
-    "It is too dark in this hallway.",
-    "No running is allowed here.",
-    "Please wash your hands before eating.",
 
-    "A man is fixing a bicycle.",
-    "The bird is sitting on a branch.",
-    "I am drinking a cup of tea.",
-    "The dog is barking at the mailman.",
-    "We are reading a story together.",
-    "She is writing an email.",
-    "The baby is giggling softly.",
-    "He is closing the curtain.",
-    "I am opening the gate.",
-    "They are decorating the room.",
-    "The bus is stopping at the corner.",
-    "I am learning a new language.",
-    "The stars are twinkling at night.",
-    "The wind is blowing strongly.",
-    "We are sitting on a bench.",
-    "He is slicing an apple with a knife.",
-    "She is sweeping the floor.",
-    "I am taking off my hat.",
-    "The plane is landing at the airport.",
-    "The bell is ringing loudly.",
-
-    "I am texting my sister.",
-    "The girl is coloring a drawing.",
-    "The boy is throwing a frisbee.",
-    "We are dancing to the music.",
-    "She is buying a new dress.",
-    "He is zipping his backpack.",
-    "I am taking a nap.",
-    "The butterfly is flying in the garden.",
-    "The fish is hiding behind a rock.",
-    "We are standing in a circle.",
-    "He is repairing the table.",
-    "She is ironing a shirt.",
-    "I am unpacking my suitcase.",
-    "The students are playing outside.",
-    "The teacher is grading papers.",
-    "I am asking a question.",
-    "The chef is cooking dinner.",
-    "We are celebrating a birthday.",
-    "He is pouring juice.",
-    "She is peeling an orange.",
-
-    "I am flipping through a magazine.",
-    "The man is riding a motorcycle.",
-    "The woman is jogging in the park.",
-    "We are visiting a museum.",
-    "He is turning a page.",
-    "She is blinking her eyes.",
-    "I am tying a knot.",
-    "The child is clapping happily.",
-    "The baby is sucking a pacifier.",
-    "We are riding scooters.",
-    "He is jumping rope.",
-    "She is humming a tune.",
-    "I am doodling in my notebook.",
-    "The watch is showing the time.",
-    "The gate is locked.",
-    "We are exiting the theater.",
-    "He is entering the classroom.",
-    "She is holding a flower.",
-    "I am dropping the ball.",
-    "The fan is spinning fast.",
-
-    "The fan is slowing down.",
-    "We are standing in a line at the store.",
-    "He is checking his watch.",
-    "She is waving at me.",
-    "I am closing the cabinet.",
-    "The snacks are on the counter.",
-    "We are sharing the cookies.",
-    "He is lifting a heavy box.",
-    "She is pulling the wagon.",
-    "I am putting down the book.",
-    "The mirror is shiny and clean.",
-    "The grass is wet from the rain.",
-    "We are splashing in puddles.",
-    "He is holding a raincoat.",
-    "She is wiping her face.",
-    "I am flipping the calendar.",
-    "The movie is starting now.",
-    "The concert is ending soon.",
-    "We are going to the library.",
-    "Good morning and have a nice day."
-]
-'''
 def main():
 
-    #with open(config.GROUND_TRUTH_FILE, "r") as f:
-    #    ground_truth_data = json.load(f)
-    # comment when not using the recall@k evaluator
-    #SENTENCES_TO_GENERATE = [item["generated_sentence"] for item in ground_truth_data]
-    #SENTENCES_TO_GENERATE = SENTENCES_TO_GENERATE[:3]
+    #choose matcher, e.g. matcher = FilenameClipMatcher()
 
-    #matcher = JsonMatcher(
-    #    pkl_path="/home/linus/easyread/Linus/Modular/caption_embeddings.pkl",
-        #tok_k_filter=20
-    #)
+    matcher = HybridMatcher() #VLMMatcher()
 
-    #matcher = FilenameClipMatcher()
 
-    matcher = VLMMatcher() # HybridMatcher() #LLMMatcher() #
-
-    #with open("/home/linus/easyread/Linus/Modular/extractpdf/socialhistories/#EN_COVID19_Protocols_enter_leave_home_manual.json", 'r', encoding='utf-8') as f:
-    #    ground_truth_data = json.load(f)
-
-# Extract into the required list format
-    #SENTENCES_TO_GENERATE = [item['sentence'] for item in ground_truth_data]
-
-    #matched_files = matcher.match(SENTENCES_TO_GENERATE[0:10], top_k=1)
     output = matcher.match(SENTENCES_TO_GENERATE[0:100], top_k=1)
     matched_files = output[0] #[0]
-    scores = output[1] #list(range(2)) #[0, 1] #output[1]
+    scores = output[1]
     scores_unsorted = scores
     indices = sorted(range(len(scores)), key=lambda i: scores[i])
     matched_files = [matched_files[i] for i in indices]
     scores = [scores[i] for i in indices]
-    #SENTENCES_TO_GENERATE = [SENTENCES_TO_GENERATE[i] + " score: " + str(scores[i]) for i in indices]
     sorted_sentences = [SENTENCES_TO_GENERATE[i] + " score: " + str(scores_unsorted[i]) for i in indices]
 
-    #paired = sorted(zip(output[0], output[1]))
-    #matched_files, scores = zip(*paired)
-    #matched_files = list(matched_files)
-    #scores = list(scores)
-    #matched_files = matcher.match(["I want to swim the whole day."], top_k=10)
-    print("-------------now matched files")
+    print("The filenames of the matched files:")
     print(matched_files)
 
     similarities = []
@@ -314,9 +183,7 @@ def main():
 
     # Create filename with current date
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    #date_str = datetime.now().strftime("%Y-%m-%d")
     output_filename = os.path.join(config.OUTPUT_DIR, f"easy_read_{timestamp}.json")
-    #output_filename = f"matched_results_{date_str}.json"
 
     # Save JSON
     output_data = {
@@ -332,14 +199,12 @@ def main():
 
     evaluators = [
         PDFEvaluator(),
-        #GroundTruthEvaluator(ground_truth_path = "/home/linus/easyread/Linus/Modular/extractpdf/socialhistories/EN_COVID19_Protocols_enter_leave_home_manual.json")
         #ClipEvaluator(),
-        #TopKEvaluator(),
         #VLMEvaluator()
     ]
 
     for evaluator in evaluators:
-        evaluator.evaluate(sorted_sentences, matched_files) #[['Kochprogramm.png'], ['Ärztliche Untersuchung.png']]) #[[matched_files[x][0].rsplit('/', 1)[-1]] for x in range(0, 5) ])
+        evaluator.evaluate(sorted_sentences, matched_files)
 
 if __name__ == "__main__":
     main()

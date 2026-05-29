@@ -1,0 +1,505 @@
+{
+    "average_similarity": 0.29256042735651133,
+    "results": [
+        {
+            "sentence": "The dog is playing with a ball. score: 3.0",
+            "filename": "play_ball.png",
+            "similarity": 0.4286234974861145
+        },
+        {
+            "sentence": "I am dropping the keys. score: 4.0",
+            "filename": "put_the_keys.png",
+            "similarity": 0.278714120388031
+        },
+        {
+            "sentence": "I am closing the door. score: 5.0",
+            "filename": "close_the_door.png",
+            "similarity": 0.428727388381958
+        },
+        {
+            "sentence": "The car is stopping at the light. score: 5.0",
+            "filename": "stopped_cars.png",
+            "similarity": 0.4871945381164551
+        },
+        {
+            "sentence": "He is fixing the chair. score: 5.0",
+            "filename": "sit_on_the_chair_2.png",
+            "similarity": 0.47808557748794556
+        },
+        {
+            "sentence": "The phone is ringing loudly. score: 6.0",
+            "filename": "speak_on_the_phone_2.png",
+            "similarity": 0.35949623584747314
+        },
+        {
+            "sentence": "We are standing in a line. score: 7.0",
+            "filename": "line_4.png",
+            "similarity": 0.23220545053482056
+        },
+        {
+            "sentence": "I am answering the question. score: 7.0",
+            "filename": "ask_5.png",
+            "similarity": 0.14426261186599731
+        },
+        {
+            "sentence": "He is drinking coffee. score: 7.0",
+            "filename": "bitter.png",
+            "similarity": 0.09483295679092407
+        },
+        {
+            "sentence": "I am reading the newspaper. score: 7.0",
+            "filename": "journalist_3.png",
+            "similarity": 0.2831108868122101
+        },
+        {
+            "sentence": "The light is turning off. score: 7.0",
+            "filename": "switch_off.png",
+            "similarity": 0.14427216351032257
+        },
+        {
+            "sentence": "We are walking in the rain. score: 7.0",
+            "filename": "bad_luck.png",
+            "similarity": 0.2072277069091797
+        },
+        {
+            "sentence": "The lesson is ending soon. score: 7.0",
+            "filename": "close_3.png",
+            "similarity": 0.2545037865638733
+        },
+        {
+            "sentence": "A man is running in the park. score: 8.0",
+            "filename": "run_4.png",
+            "similarity": 0.21920323371887207
+        },
+        {
+            "sentence": "I need help with shopping. score: 8.0",
+            "filename": "buy_2.png",
+            "similarity": 0.318095862865448
+        },
+        {
+            "sentence": "She is cooking soup in the kitchen. score: 8.0",
+            "filename": "cook.png",
+            "similarity": 0.4712528586387634
+        },
+        {
+            "sentence": "The cat is sitting on the chair. score: 8.0",
+            "filename": "be_seated_2.png",
+            "similarity": 0.37369009852409363
+        },
+        {
+            "sentence": "I am putting on my jacket. score: 8.0",
+            "filename": "put_the_coat_on_2.png",
+            "similarity": 0.33895447850227356
+        },
+        {
+            "sentence": "I am calling my friend. score: 8.0",
+            "filename": "speak_on_the_phone_2.png",
+            "similarity": 0.29294079542160034
+        },
+        {
+            "sentence": "The waiter is serving food. score: 8.0",
+            "filename": "restaurant_2.png",
+            "similarity": 0.4830141067504883
+        },
+        {
+            "sentence": "She is cutting vegetables. score: 8.0",
+            "filename": "cut_food.png",
+            "similarity": 0.40008974075317383
+        },
+        {
+            "sentence": "We are visiting a friend. score: 8.0",
+            "filename": "visit.png",
+            "similarity": 0.14396944642066956
+        },
+        {
+            "sentence": "He is opening a book. score: 8.0",
+            "filename": "study_2.png",
+            "similarity": 0.16170449554920197
+        },
+        {
+            "sentence": "He is leaving the room. score: 8.0",
+            "filename": "exit_11.png",
+            "similarity": 0.36612826585769653
+        },
+        {
+            "sentence": "We are waiting in the queue. score: 8.0",
+            "filename": "second.png",
+            "similarity": -0.012644970789551735
+        },
+        {
+            "sentence": "She is smiling at me. score: 8.0",
+            "filename": "woman_4.png",
+            "similarity": 0.25081750750541687
+        },
+        {
+            "sentence": "She is pushing the cart. score: 8.0",
+            "filename": "buy_4.png",
+            "similarity": 0.05350533872842789
+        },
+        {
+            "sentence": "The class is starting now. score: 8.0",
+            "filename": "therapeutic_pedagogy_teacher.png",
+            "similarity": 0.25276345014572144
+        },
+        {
+            "sentence": "We are going home. score: 8.0",
+            "filename": "lets_go_home.png",
+            "similarity": 0.3974728584289551
+        },
+        {
+            "sentence": "The weather is very sunny today. score: 9.0",
+            "filename": "its_sunny_2.png",
+            "similarity": 0.3493266701698303
+        },
+        {
+            "sentence": "We are going for a walk together. score: 9.0",
+            "filename": "stroll_3.png",
+            "similarity": 0.3183554410934448
+        },
+        {
+            "sentence": "The teacher explains something to the class. score: 9.0",
+            "filename": "therapeutic_pedagogy_teacher.png",
+            "similarity": 0.4093109965324402
+        },
+        {
+            "sentence": "The boy is putting on his shoes. score: 9.0",
+            "filename": "put_on_shoes_2.png",
+            "similarity": 0.5409620404243469
+        },
+        {
+            "sentence": "The child is sleeping in a big bed. score: 9.0",
+            "filename": "sleeping_beauty.png",
+            "similarity": 0.3795945644378662
+        },
+        {
+            "sentence": "I brush my teeth every morning. score: 9.0",
+            "filename": "brush_teeth_2.png",
+            "similarity": 0.4153560400009155
+        },
+        {
+            "sentence": "We are going to the supermarket to buy food. score: 9.0",
+            "filename": "supermarked.png",
+            "similarity": 0.29630184173583984
+        },
+        {
+            "sentence": "The doctor works in a large hospital. score: 9.0",
+            "filename": "observation_room_4.png",
+            "similarity": 0.12560023367404938
+        },
+        {
+            "sentence": "I am waiting for the bus at the station. score: 9.0",
+            "filename": "wait_to_the_tour_train.png",
+            "similarity": 0.362083375453949
+        },
+        {
+            "sentence": "I am very happy about the gift. score: 9.0",
+            "filename": "birthday_5.png",
+            "similarity": 0.35723060369491577
+        },
+        {
+            "sentence": "Today I feel very tired. score: 9.0",
+            "filename": "insomnia.png",
+            "similarity": 0.3117133677005768
+        },
+        {
+            "sentence": "It is too loud in this room. score: 9.0",
+            "filename": "noisy.png",
+            "similarity": 0.4933890104293823
+        },
+        {
+            "sentence": "I am drinking a glass of water. score: 9.0",
+            "filename": "drink_3.png",
+            "similarity": 0.36031097173690796
+        },
+        {
+            "sentence": "The baby is crying loudly. score: 9.0",
+            "filename": "praxia_17.png",
+            "similarity": -0.0024320781230926514
+        },
+        {
+            "sentence": "They are cleaning the room. score: 9.0",
+            "filename": "cleaning_company.png",
+            "similarity": 0.4506905972957611
+        },
+        {
+            "sentence": "I am learning a new word. score: 9.0",
+            "filename": "speech_and_language_teacher.png",
+            "similarity": 0.3509969115257263
+        },
+        {
+            "sentence": "The moon is shining at night. score: 9.0",
+            "filename": "moon.png",
+            "similarity": 0.5708858966827393
+        },
+        {
+            "sentence": "We are sitting at the table. score: 9.0",
+            "filename": "meeting_room_6.png",
+            "similarity": 0.29667359590530396
+        },
+        {
+            "sentence": "The train is arriving at the station. score: 9.0",
+            "filename": "engine_driver.png",
+            "similarity": 0.19938722252845764
+        },
+        {
+            "sentence": "The girl is drawing a picture. score: 9.0",
+            "filename": "drawer.png",
+            "similarity": 0.22566279768943787
+        },
+        {
+            "sentence": "We are listening to music. score: 9.0",
+            "filename": "listen_to_music_3.png",
+            "similarity": 0.42952588200569153
+        },
+        {
+            "sentence": "She is buying a ticket. score: 9.0",
+            "filename": "box_office.png",
+            "similarity": -0.03541015088558197
+        },
+        {
+            "sentence": "He is opening his bag. score: 9.0",
+            "filename": "close_ostomy_bag.png",
+            "similarity": 0.29939398169517517
+        },
+        {
+            "sentence": "The bird is flying in the sky. score: 9.0",
+            "filename": "bird_2.png",
+            "similarity": 0.49028700590133667
+        },
+        {
+            "sentence": "I am packing my bag. score: 9.0",
+            "filename": "handbag_3.png",
+            "similarity": 0.29557159543037415
+        },
+        {
+            "sentence": "The children are playing outside. score: 9.0",
+            "filename": "spinning_tops_game.png",
+            "similarity": 0.23699873685836792
+        },
+        {
+            "sentence": "The teacher is asking a question. score: 9.0",
+            "filename": "learning_support_classroom.png",
+            "similarity": 0.2789057493209839
+        },
+        {
+            "sentence": "The man is driving a car. score: 9.0",
+            "filename": "drivers.png",
+            "similarity": 0.3302620053291321
+        },
+        {
+            "sentence": "The child is laughing happily. score: 9.0",
+            "filename": "praxia_10.png",
+            "similarity": -0.004612304270267487
+        },
+        {
+            "sentence": "We are riding bicycles. score: 9.0",
+            "filename": "ride_a_tandem.png",
+            "similarity": 0.1713467538356781
+        },
+        {
+            "sentence": "He is jumping high. score: 9.0",
+            "filename": "jump_3.png",
+            "similarity": 0.4083649516105652
+        },
+        {
+            "sentence": "She is singing a song. score: 9.0",
+            "filename": "singer.png",
+            "similarity": 0.5308674573898315
+        },
+        {
+            "sentence": "The clock is showing the time. score: 9.0",
+            "filename": "when_2.png",
+            "similarity": 0.24572575092315674
+        },
+        {
+            "sentence": "He is checking his phone. score: 9.0",
+            "filename": "dial.png",
+            "similarity": 0.22962692379951477
+        },
+        {
+            "sentence": "The window is clean. score: 9.0",
+            "filename": "clean_the_glass.png",
+            "similarity": 0.40629827976226807
+        },
+        {
+            "sentence": "The floor is wet. score: 9.0",
+            "filename": "mud_2.png",
+            "similarity": 0.3666996359825134
+        },
+        {
+            "sentence": "She is drying her hands. score: 9.0",
+            "filename": "dry.png",
+            "similarity": 0.33637768030166626
+        },
+        {
+            "sentence": "I am turning the page. score: 9.0",
+            "filename": "turn_over.png",
+            "similarity": 0.2599731385707855
+        },
+        {
+            "sentence": "Good night and sleep well. score: 9.0",
+            "filename": "cover_2.png",
+            "similarity": 0.02400098741054535
+        },
+        {
+            "sentence": "I am eating an apple. score: 10.0",
+            "filename": "bite.png",
+            "similarity": 0.16737908124923706
+        },
+        {
+            "sentence": "A group of people is talking to each other. score: 10.0",
+            "filename": "mix_with.png",
+            "similarity": 0.004429114982485771
+        },
+        {
+            "sentence": "I wash my hands with soap. score: 10.0",
+            "filename": "lather_the_hands.png",
+            "similarity": 0.21995748579502106
+        },
+        {
+            "sentence": "No smoking is allowed here. score: 10.0",
+            "filename": "no_smoking.png",
+            "similarity": 0.5872543454170227
+        },
+        {
+            "sentence": "Please keep a safe distance. score: 10.0",
+            "filename": "keep_the_safety_distance_4.png",
+            "similarity": 0.5535564422607422
+        },
+        {
+            "sentence": "A woman is reading a book. score: 10.0",
+            "filename": "read_2.png",
+            "similarity": 0.2757760286331177
+        },
+        {
+            "sentence": "We are watching a movie together. score: 10.0",
+            "filename": "cinema.png",
+            "similarity": 0.4516603648662567
+        },
+        {
+            "sentence": "He is writing a letter. score: 10.0",
+            "filename": "answer.png",
+            "similarity": 0.13884007930755615
+        },
+        {
+            "sentence": "She is opening the window. score: 10.0",
+            "filename": "open_latch.png",
+            "similarity": 0.1738123893737793
+        },
+        {
+            "sentence": "The sun is rising in the morning. score: 10.0",
+            "filename": "dawn_2.png",
+            "similarity": 0.4894872307777405
+        },
+        {
+            "sentence": "He is cutting bread with a knife. score: 10.0",
+            "filename": "cut_the_bread_2.png",
+            "similarity": 0.5079430341720581
+        },
+        {
+            "sentence": "She is washing the dishes. score: 10.0",
+            "filename": "wash_up.png",
+            "similarity": 0.38356369733810425
+        },
+        {
+            "sentence": "The boy is kicking the ball. score: 10.0",
+            "filename": "hang_up.png",
+            "similarity": -0.049757689237594604
+        },
+        {
+            "sentence": "I am taking a shower. score: 10.0",
+            "filename": "soap_ones_body_3.png",
+            "similarity": 0.2680668234825134
+        },
+        {
+            "sentence": "The fish is swimming in the water. score: 10.0",
+            "filename": "live_4.png",
+            "similarity": 0.04793515428900719
+        },
+        {
+            "sentence": "She is folding clothes. score: 10.0",
+            "filename": "fold_2.png",
+            "similarity": 0.25146716833114624
+        },
+        {
+            "sentence": "We are eating dinner together. score: 10.0",
+            "filename": "lunch_5.png",
+            "similarity": 0.3129229247570038
+        },
+        {
+            "sentence": "The woman is walking her dog. score: 10.0",
+            "filename": "walk_the_dog.png",
+            "similarity": 0.4795670509338379
+        },
+        {
+            "sentence": "She is closing her eyes. score: 10.0",
+            "filename": "calm_4.png",
+            "similarity": 0.15732097625732422
+        },
+        {
+            "sentence": "I am tying my shoes. score: 10.0",
+            "filename": "tie_the_trainers_laces.png",
+            "similarity": 0.33824247121810913
+        },
+        {
+            "sentence": "The baby is drinking milk. score: 10.0",
+            "filename": "breastfeed.png",
+            "similarity": 0.40189799666404724
+        },
+        {
+            "sentence": "I am writing in my notebook. score: 10.0",
+            "filename": "note_2.png",
+            "similarity": 0.29037660360336304
+        },
+        {
+            "sentence": "The door is locked. score: 10.0",
+            "filename": "open_latch.png",
+            "similarity": 0.03369498997926712
+        },
+        {
+            "sentence": "We are entering the building. score: 10.0",
+            "filename": "entrance_2.png",
+            "similarity": 0.348936527967453
+        },
+        {
+            "sentence": "She is holding a cup. score: 10.0",
+            "filename": "bitter_2.png",
+            "similarity": 0.17382636666297913
+        },
+        {
+            "sentence": "The light is turning on. score: 10.0",
+            "filename": "turn_on_the_light.png",
+            "similarity": 0.41853761672973633
+        },
+        {
+            "sentence": "I am opening the fridge. score: 10.0",
+            "filename": "open_the_fridge.png",
+            "similarity": 0.5159487128257751
+        },
+        {
+            "sentence": "The food is on the table. score: 10.0",
+            "filename": "gluttons.png",
+            "similarity": 0.2985386848449707
+        },
+        {
+            "sentence": "We are sharing the meal. score: 10.0",
+            "filename": "snaffle.png",
+            "similarity": 0.03362526744604111
+        },
+        {
+            "sentence": "He is carrying a box. score: 10.0",
+            "filename": "support_3.png",
+            "similarity": 0.02466011233627796
+        },
+        {
+            "sentence": "I am picking up the book. score: 10.0",
+            "filename": "take_a_book.png",
+            "similarity": 0.3240264356136322
+        },
+        {
+            "sentence": "He is holding an umbrella. score: 10.0",
+            "filename": "bad_luck.png",
+            "similarity": 0.18873059749603271
+        }
+    ]
+}
