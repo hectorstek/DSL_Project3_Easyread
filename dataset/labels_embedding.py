@@ -11,13 +11,13 @@ from urllib.request import Request, urlopen
 from PIL import Image
 from get_image_embedding import get_image_embedding
 
-# ── Paths ──────────────────────────────────────────────────────────────────────
+# Paths
 EMBEDDINGS_PATH = Path("gold_embeddings.pkl")
 DATA_DIR        = Path("easyread-retrieval-dataset/data")
 METADATA_PATH   = Path("easyread-retrieval-dataset/metadata_v5.jsonl")
 GOLD_PIC_DIR    = Path("easyread-retrieval-dataset/gold_standard_pic")
 
-# ── Config ─────────────────────────────────────────────────────────────────────
+# Config
 VLLM_MAX_RETRIES  = max(1, int(os.getenv("VLLM_MAX_RETRIES", "3")))
 VLLM_MODEL        = os.getenv("VLLM_MODEL", "Qwen/Qwen3-VL-8B-Instruct-FP8")
 VLLM_CHAT_URL     = os.getenv("VLLM_CHAT_URL", "http://localhost:8000/v1/chat/completions")
@@ -25,7 +25,7 @@ MAX_IMAGES        = 16000
 TOP_K             = 2
 THUMBNAIL_SIZE    = (256, 256)
 
-# ── Load gold embeddings ───────────────────────────────────────────────────────
+# Load gold embeddings
 with open(EMBEDDINGS_PATH, "rb") as f:
     gold_library_vectors = pickle.load(f)
 
@@ -40,7 +40,7 @@ for key, data in gold_library_vectors.items():
     data["path"] = str(GOLD_PIC_DIR / old_path.name)
 
 
-# ── Helpers ────────────────────────────────────────────────────────────────────
+# Helpers
 
 def load_already_labeled() -> set[str]:
     labeled = set()
@@ -129,7 +129,7 @@ def _vllm_call(user_content: list) -> str:
     raise RuntimeError("vLLM: exhausted retries")
 
 
-# ── Step 1: RAG labelling ─────────────────────────────────────────────────────
+# Step 1: RAG labelling
 
 def label_with_rag(target_image_path, example_images, example_jsons, target_image_name, example_image_names) -> dict:
     task_text = """Task: Label this Easy Read pictogram into JSON with this exact structure:
@@ -167,7 +167,7 @@ def label_with_rag(target_image_path, example_images, example_jsons, target_imag
     return json.loads(raw)
 
 
-# ── Step 2: Verification ──────────────────────────────────────────────────────
+# Step 2: Verification
 
 def verify_label(target_image_path, label, target_image_name) -> dict:
     verify_text = f"""You previously labeled this Easy Read pictogram (filename: {target_image_name}) as:
@@ -191,7 +191,7 @@ Output only a single JSON object, no markdown."""
         return label
 
 
-# ── Main loop ──────────────────────────────────────────────────────────────────
+# Main loop
 
 def main():
     already_labeled = load_already_labeled()

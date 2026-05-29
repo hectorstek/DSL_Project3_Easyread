@@ -13,7 +13,7 @@ import config
 class VLMMatcher(BaseMatcher):
     def __init__(self):
         self.pkl_path = config.HYBRID_INDEX
-        self.st_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
+        self.st_model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2', device='cpu')
 
         with open(self.pkl_path, 'rb') as f:
             self.dataset = pickle.load(f)

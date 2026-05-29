@@ -1,7 +1,6 @@
 import sys
 import os
 
-# Make project root importable (matchers/, config.py, etc.)
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, ROOT)
 
@@ -13,11 +12,16 @@ IMAGE_DIR = os.path.join(
     ROOT, "dataset", "easyread-retrieval-dataset", "data"
 )
 
-
 @st.cache_resource(show_spinner=False)
 def load_matcher():
     from matchers.vlm_matcher import VLMMatcher
     return VLMMatcher()
+
+# Uncomment to use Hybrid matcher
+# @st.cache_resource(show_spinner=False)
+# def load_matcher():
+#     from matchers.hybrid_matcher import HybridMatcher
+#     return HybridMatcher()
 
 
 def find_image_path(filename: str) -> str | None:
@@ -51,7 +55,13 @@ def main() -> None:
         "Uses VLM-based re-ranking (Qwen2.5 intent extraction + Gemma 4 visual scoring)."
     )
 
-    # ── Sidebar ──────────────────────────────────────────────────────────────
+    # Uncomment to use Hybrid matcher
+    # st.write(
+    #     "Enter plain-language sentences and see which pictograms our system retrieves. "
+    #     "Uses Hybrid Matcher."
+    # )
+
+    # Sidebar
     with st.sidebar:
         st.header("Settings")
         st.info("**Matcher:** VLM (Qwen2.5 + Gemma 4)\n\nIntent extraction followed by visual re-ranking of top candidates.")
@@ -61,7 +71,7 @@ def main() -> None:
         if not os.path.isdir(IMAGE_DIR):
             st.error("Image directory not found.")
 
-    # ── Main area ─────────────────────────────────────────────────────────────
+    # Main area
     text_input = st.text_area(
         "Sentences to illustrate (one per line):",
         height=180,
@@ -81,7 +91,7 @@ def main() -> None:
             return
 
         try:
-            with st.spinner("Loading VLM matcher (first run downloads models and may take several minutes)…"):
+            with st.spinner("Loading matcher (first run downloads models and may take several minutes)…"):
                 matcher = load_matcher()
         except FileNotFoundError as e:
             st.error(
@@ -101,7 +111,7 @@ def main() -> None:
                 st.error(f"Matching failed: {e}")
                 return
 
-        st.success(f"Done — {len(sentences)} sentence(s) processed.")
+        st.success(f"Done - {len(sentences)} sentence(s) processed.")
         st.divider()
         render_results(sentences, results, confidences)
 
