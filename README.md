@@ -110,16 +110,6 @@ Type an EasyRead sentence into the interface and see the retrieved pictogram wit
 python3 main.py
 ```
 
-### Re-run labelling on the corpus
-
-If you want to regenerate annotations (for a different model, schema, or dataset):
-
-```bash
-python labelling/run.py --images data/arasaac/ --output data/labels.jsonl
-```
-
-This requires a vLLM server running locally — see `labelling/README.md` for details.
-
 ---
 
 ## Evaluation
